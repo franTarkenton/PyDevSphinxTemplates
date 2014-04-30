@@ -24,10 +24,10 @@ assert editor is not None
 
 print 'cmd: ', cmd
 # debug, later on this should switch to onCreateActions (only loads once then gets re-used
-if cmd == 'onSave':
+if cmd == 'onSetDocument':
     Commenter = systemGlobals.get('Commenter')
 #     DEBUGGING! Forcing the reload of this object
-    Commenter = None
+#     Commenter = None
     print 'commenter is: ', Commenter
     if Commenter is None:
         class Commenter:
@@ -48,6 +48,7 @@ if cmd == 'onSave':
                 return self.currentLine
             
             def docMethod(self):
+                
                 #print 'doc: ', self.document, self.document.getClass().getName()
                 #print 'editor: ', self.editor, self.editor.getClass().getName()
                 #line = self.selection.getCursorLine()
@@ -75,7 +76,7 @@ if cmd == 'onSave':
                         self.selection.addLine(indentation + docString, stmt.beginLine-1)
                         return docString
                     
-            def prepOutputMethodString2(self, indentation, argList, hasReturn=False):
+            def prepOutputMethodString2(self, indentation, argList, hasReturn=False):                
                 '''
                 This method will receive a bunch of information about a function, 
                 then based on that information it will assemble a python docstring
@@ -573,7 +574,7 @@ if cmd == 'onSave':
     
     DoSphinxMethodComments = systemGlobals.get('DoSphinxMethodComments')
     # DEBUGGING! Forcing the reload of this object
-    DoSphinxMethodComments = None
+#     DoSphinxMethodComments = None
     if DoSphinxMethodComments is None:
         Action = editor.getActionClass() #from org.eclipse.jface.action import Action #@UnresolvedImport
         from java.lang import Runnable #@UnresolvedImport
@@ -606,7 +607,7 @@ if cmd == 'onSave':
         
     DoSphinxClassComments = systemGlobals.get('DoSphinxClassComments')
     # DEBUGGING! Forcing the reload of this object
-    DoSphinxClassComments = None
+#     DoSphinxClassComments = None
     if DoSphinxClassComments is None:
         Action = editor.getActionClass() #from org.eclipse.jface.action import Action #@UnresolvedImport
         from java.lang import Runnable #@UnresolvedImport
