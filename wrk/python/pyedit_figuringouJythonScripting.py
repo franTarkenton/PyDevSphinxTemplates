@@ -76,6 +76,7 @@ if cmd == 'onSetDocument':
                         self.selection.addLine(indentation + docString, stmt.beginLine-1)
                         return docString
                     
+                    
             def prepOutputMethodString2(self, indentation, argList, hasReturn=False):                
                 '''
                 This method will receive a bunch of information about a function, 
